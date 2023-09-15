@@ -14,6 +14,7 @@
     let pipes;
     let margin;
     let bird;
+    let touch;
 
     class StartMenu extends Phaser.Scene {
         constructor() {
@@ -30,6 +31,9 @@
 
         update() {
             spaceBar = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
+            touch = this.input.on('pointerdown', function (pointer) {
+                this.scene.start('game');
+            });
 
             if (Phaser.Input.Keyboard.JustUp(spaceBar)) {
                 this.scene.start('game');
